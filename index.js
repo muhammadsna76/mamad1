@@ -1,7 +1,7 @@
 const headers = {
-  Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjZjNjJjN2NlOGQ4NTdmNDA3ODM4MDY1IiwiaWF0IjoxNzI3Njc1NjM1LCJleHAiOjE3Mjc3NjIwMzUsInR5cGUiOiJhY2Nlc3MifQ.HMqgVnQ7CiRoNhsfZABHRbwoHFIEHKhLLJDaX66sI4c", // توکن را با توکن معتبر جایگزین کنید
-  "Content-Type": "application/json",
-};
+  Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjZjNjI2YjRlOGQ4NTdmNDA3NzZjNzAyIiwiaWF0IjoxNzI3Njg1NDM2LCJleHAiOjE3Mjc3NzE4MzYsInR5cGUiOiJhY2Nlc3MifQ.XbDBm1Booz19pe6KgVuUyy4KajbweBZcCso7YV29juI", // توکن را با توکن معتبر جایگزین کنید
+  "Content-Type": "application/json", // اضافه کردن هدر Content-Type
+}
 
 async function delay(ms) {
   return new Promise((resolve) => setTimeout(() => resolve(true), ms));
@@ -38,7 +38,7 @@ async function completeAllOfMissions(missions) {
       continue;
     }
 
-    await delay(500);
+    await delay(500); // Delay between requests
   }
 }
 
