@@ -1,19 +1,19 @@
 const headers = {
-  Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjZjNjJjNWJlOGQ4NTdmNDA3ODMzYjQ5IiwiaWF0IjoxNzI3OTU2Mzg4LCJleHAiOjE3MjgwNDI3ODgsInR5cGUiOiJhY2Nlc3MifQ.UdjsX8fwHoEQDgUSz7ByDeWi943PyDdU1N99xOFS6yg", // توکن را با توکن معتبر جایگزین کنید
+  Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjZjNjJjNWJlOGQ4NTdmNDA3ODMzYjQ5IiwiaWF0IjoxNzI3OTU2Mzg4LCJleHAiOjE3MjgwNDI3ODgsInR5cGUiOiJhY2Nlc3MifQ.UdjsX8fwHoEQDgUSz7ByDeWi943PyDdU1N99xOFS6yg", // توکن معتبر خود را اینجا قرار دهید
   "Content-Type": "application/json", // اضافه کردن هدر Content-Type
-}
+};
 
 async function delay(ms) {
-  return new Promise((resolve) => setTimeout(() => resolve(true), ms));
+  return new Promise(resolve => setTimeout(resolve, ms)); // استفاده از setTimeout برای تاخیر
 }
 
 async function getMissions() {
   const res = await fetch("https://api-mission.goatsbot.xyz/missions/user", {
-    headers,
+    headers: headers,
   });
 
   if (res.status === 401) {
-    console.error("Authorization failed: 401 Unauthorized");
+    console.log("Authorization failed: 401 Unauthorized");
     return [];
   }
 
@@ -23,18 +23,15 @@ async function getMissions() {
 
 async function completeAllOfMissions(missions) {
   for (let i = 0; i < missions.length; i++) {
-    const res = await fetch(
-      `https://dev-api.goatsbot.xyz/missions/action/${missions[i]._id}`,
-      {
-        method: "POST",
-        headers,
-      }
-    );
+    const res = await fetch(`https://dev-api.goatsbot.xyz/missions/action/${missions[i]._id}`, {
+      method: "POST",
+      headers: headers,
+    });
 
-    console.log(i, res.status);
+    console.log(`${i}: ${res.status}`);
 
     if (res.status === 401) {
-      console.error("Authorization failed on mission", missions[i]._id);
+      console.log(`Authorization failed on mission ${missions[i]._id}`);
       continue;
     }
 
@@ -43,18 +40,18 @@ async function completeAllOfMissions(missions) {
 }
 
 async function viewAdv() {
-  const res = await fetch(
-    "https://dev-api.goatsbot.xyz/missions/action/66db47e2ff88e4527783327e",
-    { method: "POST", headers }
-  );
+  const res = await fetch("https://dev-api.goatsbot.xyz/missions/action/66db47e2ff88e4527783327e", {
+    method: "POST",
+    headers: headers,
+  });
 
   const data = await res.json();
-  console.log("adv -", data.status ?? data.message);
+  console.log(`adv - ${data.status ?? data.message}`);
 }
 
 async function makeMoney() {
   const missions = await getMissions();
-  
+
   if (missions.length === 0) {
     console.log("No missions available or authorization failed.");
     return;
@@ -62,9 +59,9 @@ async function makeMoney() {
 
   await completeAllOfMissions(missions);
   await viewAdv();
-  setInterval(viewAdv, 60000); // View ad every 60 seconds
+
+  // اجرای viewAdv هر دقیقه
+  setInterval(viewAdv, 60000); // هر یک دقیقه اجرای viewAdv
 }
 
 makeMoney();
-
-console.log("Executed: started...");
