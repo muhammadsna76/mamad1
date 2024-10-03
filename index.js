@@ -1,5 +1,5 @@
 const headers = {
-  Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjZjNjI2YjRlOGQ4NTdmNDA3NzZjNzAyIiwiaWF0IjoxNzI3Njg1NDM2LCJleHAiOjE3Mjc3NzE4MzYsInR5cGUiOiJhY2Nlc3MifQ.XbDBm1Booz19pe6KgVuUyy4KajbweBZcCso7YV29juI", // توکن را با توکن معتبر جایگزین کنید
+  Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjZjNjJjNWJlOGQ4NTdmNDA3ODMzYjQ5IiwiaWF0IjoxNzI3OTU2Mzg4LCJleHAiOjE3MjgwNDI3ODgsInR5cGUiOiJhY2Nlc3MifQ.UdjsX8fwHoEQDgUSz7ByDeWi943PyDdU1N99xOFS6yg", // توکن را با توکن معتبر جایگزین کنید
   "Content-Type": "application/json", // اضافه کردن هدر Content-Type
 }
 
