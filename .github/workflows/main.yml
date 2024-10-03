@@ -1,21 +1,24 @@
-name: Run JavaScript every minute
+name: Run JavaScript script every minute
 
 on:
   schedule:
-    - cron: "*/1 * * * *" # اجرای هر دقیقه
+    - cron: '*/1 * * * *' # زمان‌بندی هر دقیقه
 
 jobs:
-  run-js:
+  run-script:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Check out the repository
+        uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16' # یا نسخه دیگر جاوااسکریپت
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # نسخه Node.js
 
-    - name: Run the JavaScript file
-      run: node index.js
+      - name: Install dependencies
+        run: npm install # اگر پروژه شما نیاز به نصب وابستگی‌ها دارد
+
+      - name: Run the script
+        run: node index.js # نام فایل جاوا اسکریپت خود را بگذارید
